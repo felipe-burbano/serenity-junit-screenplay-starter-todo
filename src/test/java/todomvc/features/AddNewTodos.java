@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
 import net.serenitybdd.screenplay.annotations.CastMember;
 import net.serenitybdd.screenplay.questions.Text;
+import net.serenitybdd.screenplay.waits.Wait;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +28,7 @@ class AddNewTodos {
                 Open.url("https://todomvc.com/examples/angularjs/#/"),
                 Enter.theValue("Buy some milk").into(".new-todo").thenHit(Keys.RETURN)
         );
+
         var todos = toby.asksFor(Text.ofEach(".todo-list li"));
         assertThat(todos).containsExactly("Buy some milk");
     }
